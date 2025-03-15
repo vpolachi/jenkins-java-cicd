@@ -6,7 +6,7 @@ pipeline{
                 git branch: 'main', url: 'https://github.com/vpolachi/jenkins-java-cicd.git'
             }
         }
-        stage("maven Build"){
+        stage("maven tests"){
             steps{
                 sh 'mvn test'
             }
