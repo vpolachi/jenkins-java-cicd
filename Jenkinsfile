@@ -1,5 +1,8 @@
 pipeline{
     agent any
+    tools{
+	maven "maven399"
+	}
     stages{
         stage("Checkout from GitHub"){
             steps{
