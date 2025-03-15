@@ -1,0 +1,11 @@
+/home/ubuntu/jenkins-java-cicd/src/test/java/org/springframework/samples/petclinic/model/ValidatorTests.java
+/home/ubuntu/jenkins-java-cicd/src/test/java/org/springframework/samples/petclinic/web/OwnerControllerTests.java
+/home/ubuntu/jenkins-java-cicd/src/test/java/org/springframework/samples/petclinic/service/ClinicServiceJdbcTests.java
+/home/ubuntu/jenkins-java-cicd/src/test/java/org/springframework/samples/petclinic/web/CrashControllerTests.java
+/home/ubuntu/jenkins-java-cicd/src/test/java/org/springframework/samples/petclinic/web/PetTypeFormatterTests.java
+/home/ubuntu/jenkins-java-cicd/src/test/java/org/springframework/samples/petclinic/service/AbstractClinicServiceTests.java
+/home/ubuntu/jenkins-java-cicd/src/test/java/org/springframework/samples/petclinic/web/PetControllerTests.java
+/home/ubuntu/jenkins-java-cicd/src/test/java/org/springframework/samples/petclinic/web/VetControllerTests.java
+/home/ubuntu/jenkins-java-cicd/src/test/java/org/springframework/samples/petclinic/service/ClinicServiceJpaTests.java
+/home/ubuntu/jenkins-java-cicd/src/test/java/org/springframework/samples/petclinic/service/ClinicServiceSpringDataJpaTests.java
+/home/ubuntu/jenkins-java-cicd/src/test/java/org/springframework/samples/petclinic/web/VisitControllerTests.java
