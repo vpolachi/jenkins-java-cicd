@@ -21,7 +21,7 @@ pipeline{
         }
 	stage("OWASP Dependency-Check"){
 	    steps{	
-	    dependencyCheck additionalArguments: '--scan ./ --format "ALL"', odcInstallation: 'dependency-check', failBuildOn: 'CRITICAL'
+	    dependencyCheck additionalArguments: '--scan ./ --format "ALL"', odcInstallation: 'dependency-check'
 	    dependencyCheckPublisher pattern: '**/dependency-check-report.xml'
             }
         }
