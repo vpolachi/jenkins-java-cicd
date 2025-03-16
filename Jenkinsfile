@@ -19,6 +19,11 @@ pipeline{
                 sh 'mvn clean package'
             }
         }
+	stage("OWASP Dependency-Check")
+	    dependencyCheck additionalArguments: '--scan ./ --format "ALL"', odcInstallation: 'dependency-check', failBuildOn: 'CRITICAL'
+	    dependencyCheckPublisher pattern: '**/dependency-check-report.xml'
+            }
+        }
     }
 
 }
