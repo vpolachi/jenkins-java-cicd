@@ -21,7 +21,7 @@ pipeline{
         }
 	stage("OWASP Dependency-Check"){
 	    steps{	
-	    	sh "/opt/dependency-check/bin/dependency-check.sh --scan /var/lib/jenkins/workspace/petclinic-cicd --format ALL"
+	    	sh "/opt/dependency-check/bin/dependency-check.sh --scan /var/lib/jenkins/workspace/petclinic-cicd/target --format ALL"
             }
         }
     }
