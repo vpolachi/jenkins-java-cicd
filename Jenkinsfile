@@ -21,9 +21,11 @@ pipeline{
         }
         stage("OWASP Dependency-Check Analysis") {
             steps {
-                // Run Dependency-Check scan on the target directory and save reports to ./reports
-                dependencyCheck additionalArguments: '--scan ./target --format ALL --project MyProject --out ./reports', odcInstallation: 'dependency-check'
+              // Run Dependency-Check scan on the target directory and save reports to ./reports
+                dependencyCheck additionalArguments: '--scan ./target --format ALL --project MypetclinicProject --out ./reports', odcInstallation: 'dependency-check'
                 
+                // Publish Dependency-Check results to Jenkins
+                dependencyCheckPublisher pattern: '**/reports/dependency-check-report.xml'
             }
         }
     }
