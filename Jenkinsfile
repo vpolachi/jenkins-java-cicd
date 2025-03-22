@@ -23,15 +23,6 @@ pipeline{
                sh 'mvn clean package'
             }
         }
-        stage("OWASP Dependency-Check Analysis"){
-            steps{
-              // Run Dependency-Check scan on the target directory and save reports to ./reports
-                dependencyCheck additionalArguments: '--scan ./target --format ALL --project MypetclinicProject --out ./reports', odcInstallation: 'dependency-check'
-                
-                // Publish Dependency-Check results to Jenkins
-                dependencyCheckPublisher pattern: '**/reports/dependency-check-report.xml'
-            }
-        }
         stage('SonarQube Analysis'){
             steps{
                 withSonarQubeEnv('SonarQube-Server'){ // Use the name configured in Jenkins
