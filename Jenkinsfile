@@ -5,6 +5,10 @@ pipeline{
             steps{
                checkout scm
             }
+        stage("Unit Testing"){
+            steps{
+               sh 'mvn test'
+            }
         }
     }
 }
