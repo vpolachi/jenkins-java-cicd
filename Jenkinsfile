@@ -4,10 +4,10 @@ pipeline{
         maven 'mvn3.9.9' // Use the Maven installation configured in Jenkins
     }
     environment{
-        SONAR_AUTH_TOKEN = credentials('sonar-token') // Inject SonarQube token as an environment variable
+        SONAR_AUTH_TOKEN = credentials('jenkins-token') // Inject SonarQube token as an environment variable
     }
     stages{
-        stage("Checkout") {
+        stage("Checkout"){
             steps{
                 checkout scm
             }
@@ -30,7 +30,7 @@ pipeline{
             }
         }
     }
-    post {
+    post{
         success{
             echo "Pipeline succeeded! SonarQube analysis completed."
         }
