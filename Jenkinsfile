@@ -28,5 +28,12 @@ pipeline{
                 dependencyCheckPublisher pattern: '**/reports/dependency-check-report.xml'
             }
         }
+        stage('SonarQube Analysis'){
+            steps{
+                withSonarQubeEnv('SonarQube-Server'){ // Use the name configured in Jenkins
+                    sh "${SONAR_SCANNER_HOME}/bin/sonar-scanner -Dsonar.projectKey=your-project-key -Dsonar.sources=. -Dsonar.host.url=http://localhost:9000 -Dsonar.login=your-sonarqube-token"
+                }
+            }
+        }
     }
 }
