@@ -19,8 +19,8 @@ pipeline{
                sh 'mvn clean package'
             }
         }
-        stage("OWASP Dependency-Check Analysis") {
-            steps {
+        stage("OWASP Dependency-Check Analysis"){
+            steps{
                 // Run Dependency-Check scan on the target directory and save reports to ./reports
                 dependencyCheck additionalArguments: '--scan ./target --format ALL --project petclinicproject --out ./reports', odcInstallation: 'dependency-check'
                 
