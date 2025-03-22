@@ -16,6 +16,7 @@ pipeline{
             steps{
                 echo "SonarQube Token: $SONAR_AUTH_TOKEN" // Debug step to verify the token
             }
+        }
         stage("Unit Testing"){
             steps{
                 sh 'mvn test'
