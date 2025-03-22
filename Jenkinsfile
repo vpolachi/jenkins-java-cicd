@@ -1,34 +1,41 @@
 pipeline{
     agent any
-
-     environment{
-        SONAR_SCANNER_HOME = tool name: 'SonarQube-Scanner', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
+    tools{
+        maven 'mvn3.9.9' // Use the Maven installation configured in Jenkins
     }
-       tools{
-          maven 'mvn3.9.9' // Use the Maven installation configured in Jenkins   
-       }
+    environment{
+        SONAR_AUTH_TOKEN = credentials('sonar-token') // Inject SonarQube token as an environment variable
+    }
     stages{
-        stage("Checkout"){
+        stage("Checkout") {
             steps{
-               checkout scm
+                checkout scm
             }
         }
         stage("Unit Testing"){
             steps{
-               sh 'mvn test'
+                sh 'mvn test'
             }
         }
         stage("Maven Build"){
             steps{
-               sh 'mvn clean package'
+                sh 'mvn clean package'
             }
         }
-        stage('SonarQube Analysis'){
+        stage("SonarQube Analysis"){
             steps{
-                withSonarQubeEnv('SonarQube-Server'){ // Use the name configured in Jenkins
-                    sh "${SONAR_SCANNER_HOME}/bin/sonar-scanner -Dsonar.projectKey=your-project-key -Dsonar.sources=. -Dsonar.host.url=http://172.31.45.100:9000 -Dsonar.login=your-sonarqube-token"
+                withSonarQubeEnv('SonarQube-Server') { // Use the SonarQube server configured in Jenkins
+                    sh 'mvn sonar:sonar -Dsonar.projectKey=my-project -Dsonar.projectName="My Project" -Dsonar.host.url=http://43.205.96.24:9000 -Dsonar.login=$SONAR_AUTH_TOKEN'
                 }
             }
+        }
+    }
+    post {
+        success{
+            echo "Pipeline succeeded! SonarQube analysis completed."
+        }
+        failure{
+            echo "Pipeline failed. Check the logs for details."
         }
     }
 }
