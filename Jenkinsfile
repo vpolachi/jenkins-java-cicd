@@ -2,7 +2,7 @@ pipeline{
     agent any
         tools{
             maven 'maven3.9.9'
-            sonarRunner 'sonar-scanner'
+            hudson.plugins.sonar.SonarRunnerInstallation 'sonar-scanner'
         }
     stages{
         stage("Checkout"){
@@ -21,7 +21,7 @@ pipeline{
                     sh """
                         sonar-scanner \
                         -Dsonar.projectKey=myprojectn \
-                        -Dsonar.projectName=myprojectnk \
+                        -Dsonar.projectName=myprojectk \
                         -Dsonar.sources=src \
                         -Dsonar.java.binaries=target/classes \
                         -Dsonar.host.url=http://13.233.238.150:9000
