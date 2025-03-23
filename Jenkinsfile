@@ -16,7 +16,7 @@ pipeline{
         }
           stage("SonarQube Analysis"){
             steps{
-                withSonarQubeEnv('Sonar-server'){ // Use the SonarQube server configured in Jenkins
+                withSonarQubeEnv('Sonar-server'){ //Use the SonarQube server configured in Jenkins
                     sh """
                         docker run --rm \
                         -v "$WORKSPACE:/usr/src" \
