@@ -2,7 +2,7 @@ pipeline{
     agent any
         tools{
             maven 'maven3.9.9'
-            sonarqubeScanner 'Sonar-scanner'
+            sonarRunner 'sonar-scanner'
         }
     stages{
         stage("Checkout"){
@@ -17,7 +17,7 @@ pipeline{
         }
          stage("SonarQube Analysis"){
             steps{
-                withSonarQubeEnv('Sonar-server'){ // Use the SonarQube server configured in Jenkins
+                withSonarQubeEnv('sonar-server'){ // Use the SonarQube server configured in Jenkins
                     sh """
                         sonar-scanner \
                         -Dsonar.projectKey=myprojectn \
