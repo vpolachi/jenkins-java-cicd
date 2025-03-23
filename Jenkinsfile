@@ -18,6 +18,9 @@ pipeline{
             steps{
                 withSonarQubeEnv('Sonar-server'){ // Use the SonarQube server configured in Jenkins
                     sh """
+                        docker run --rm \
+                        -v "$WORKSPACE:/usr/src" \
+                        sonarsource/sonar-scanner-cli:latest \
                         sonar-scanner \
                         -Dsonar.projectKey=myprojectn \
                         -Dsonar.projectName=myprojectnk \
