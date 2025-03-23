@@ -18,15 +18,13 @@ pipeline{
             steps{
                 withSonarQubeEnv('Sonar-server'){ //Use the SonarQube server configured in Jenkins
                     sh """
-                        docker run --rm \
-                        -v "$WORKSPACE:/usr/src" \
-                        sonarsource/sonar-scanner-cli:latest \
                         sonar-scanner \
-                        -Dsonar.projectKey=myprojectn \
-                        -Dsonar.projectName=myprojectnk \
-                        -Dsonar.sources=src \
-                        -Dsonar.java.binaries=target/classes \
-                        -Dsonar.host.url=http://13.233.238.150:9000
+                            -Dsonar.projectKey=myprojectn \
+                            -Dsonar.projectName=myprojectnk \
+                            -Dsonar.sources=src \
+                            -Dsonar.java.binaries=target/classes \
+                            -Dsonar.host.url=http://13.233.238.150:9000 \
+                            -Dsonar.login=squ_9570f50ccb5ec07e2cdf1add3feaaeb12eb445bb
                     """
                 }
             }
