@@ -20,8 +20,8 @@ pipeline{
                 withSonarQubeEnv('Sonar-server'){ // Use the SonarQube server configured in Jenkins
                     sh """
                         sonar-scanner \
-                        -Dsonar.projectKey=your-project-key \
-                        -Dsonar.projectName=your-project-name \
+                        -Dsonar.projectKey=myprojectn \
+                        -Dsonar.projectName=myprojectnk \
                         -Dsonar.sources=src \
                         -Dsonar.java.binaries=target/classes \
                         -Dsonar.host.url=http://13.233.238.150:9000
