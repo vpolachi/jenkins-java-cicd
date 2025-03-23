@@ -2,11 +2,17 @@ pipeline{
     agent any
         tools{
             maven 'maven3.9.9'
+            sonarRunner 'sonar-scanner'
         }
     stages{
         stage("Checkout"){
             steps{
                 checkout scm
+            }
+        }
+         stage("maven compile"){
+            steps{
+                sh 'mvn compile'
             }
         }
         stage("maven build"){
